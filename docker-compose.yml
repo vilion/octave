@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  octave:
+    image: docker.io/gnuoctave/octave:6.3.0
+    environment:
+      AWS_ACCESS_KEY_ID: AKIAXKGCKLIQREAW7A64
+      AWS_SECRET_ACCESS_KEY: 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
+      DISPLAY: ${HOSTNAME}:0
+      XDG_RUNTIME_DIR: ${XDG_RUNTIME_DIR}
+      NB_USER: ${USER}
+      GRANT_SUDO: 'yes'
+    command: start.sh octave --gui
+    user: root
+    network_mode: host
+    volumes:
+      - ~/.Xauthority:/root/.Xauthority
+      - ${STUDY_MACHINE_LEARNING_DIR}:/coursera-andrew-ng
+    stdin_open: true
+    tty: true
+
