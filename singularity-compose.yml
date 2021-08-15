@@ -1,0 +1,10 @@
+version: "2.0"
+instances:
+  octave:
+    image: /home/takabatakekoichi/go/src/github.com/sylabs/singularity-ce-3.8.1/octave_6.3.0.sif
+    volumes:
+      - /home/takabatakekoichi/study/machine-learning/coursera-andrew-ng:/coursera-andrew-ng
+    exec:    
+      command: octave
+      options:
+        - gui

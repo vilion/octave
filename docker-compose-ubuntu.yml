@@ -3,15 +3,15 @@ services:
   octave:
     image: docker.io/gnuoctave/octave:6.3.0
     environment:
-      DISPLAY: ${HOSTNAME}:0
+      DISPLAY: ${DISPLAY}
       XDG_RUNTIME_DIR: ${XDG_RUNTIME_DIR}
-      NB_USER: ${USER}
+      NB_USER: ${NB_USER}
+      NB_GID: ${NB_GID}
       GRANT_SUDO: 'yes'
     command: start.sh octave --gui
     user: root
     network_mode: host
     volumes:
-      - ~/.Xauthority:/root/.Xauthority
       - ${STUDY_MACHINE_LEARNING_DIR}:/coursera-andrew-ng
     stdin_open: true
     tty: true
