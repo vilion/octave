@@ -4,9 +4,11 @@ services:
     image: docker.io/gnuoctave/octave:6.3.0
     environment:
       DISPLAY: ${HOSTNAME}:0
-      XDG_RUNTIME_DIR: ${XDG_RUNTIME_DIR}
-      NB_USER: ${USER}
+      XDG_RUNTIME_DIR: /home/${NB_USER}/xdg_runtime_dir
+      NB_USER: ${NB_USER}
+      NB_GID: ${NB_GID}
       GRANT_SUDO: 'yes'
+      LIBGL_ALWAYS_INDIRECT: 1
     command: start.sh octave --gui
     user: root
     network_mode: host
